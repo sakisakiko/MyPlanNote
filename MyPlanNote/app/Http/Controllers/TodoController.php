@@ -15,6 +15,7 @@ class TodoController extends Controller
      */
     public function index()
     {
+      
        $todos = Todo::where('status',false)->get();
        return view('todos.index',compact('todos'));
     }
@@ -44,14 +45,6 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-          // バリデーション
-          $rules = [
-            'title' => 'required|max:30',
-          ];
-        
-          $messages = ['required' => '必須項目です', 'max' => '30文字以下にしてください。'];
-          Validator::make($request->all(), $rules, $messages)->validate();
-          
           // 新規作成
           $todo = new Todo;
          
@@ -101,15 +94,6 @@ class TodoController extends Controller
     {
         
       if($request->status===null){
-        //バリデーション
-        $rules = [
-          'title' => 'required|max:30',
-          'due_date'=> 'required'
-        ];
-      
-        $messages = ['required' => '必須項目です', 'max' => '30文字以下にしてください。'];
-        Validator::make($request->all(), $rules, $messages)->validate();
-        
       // 編集ボタンを押した時
       
       // 該当データを検索

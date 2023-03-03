@@ -2,9 +2,8 @@
 <body>
 
 <div class="container index_box">
-  
 <div class="sub_box">
-<h2 >プランを入力しよう！</h2>
+<h2 ><strong>プランを入力しよう！</strong></h2>
 @error('title','due_date')
   <div class="mt-3">
       <p>
@@ -14,22 +13,30 @@
 @enderror
 <form action="/todos" method="post">
   @csrf
-<div class="plan_create">
-<label>プラン</label><input type="text" placeholder="プランを入力してください" name="title" />
-<label>予定日</label>
-<input type="text" name="due_date" id="due_date" value="{{ old('due_date') }}" /></br>
-</br><button>作成する</button>
-</div>
+  <table>
+    <tr>
+      <td><span><strong>プラン</strong></span></td>
+      <td><input type="text" placeholder="プランを入力してください" name="title" /></td>
+    </tr>
+  </table>
+  <table >
+      <tr>
+      <td><span><strong>予定日</strong></span></td>
+      <td><input type="text" name="due_date" id="due_date" value="{{ old('due_date') }}" /></td>
+    </tr>
+  </table>
+<button><strong>作成する</strong></button>
 </form>
 </div><!--side_box-->  
  
 <div class="main_box">
-<h1 >マイプランリスト</h1>
+<h1><strong>マイプランリスト</strong></h1>
 <table class="table-auto">
 <thead>
 <tr>
 <th>プラン名</th>
 <th>予定日</th>
+<th></th>
 <th></th>
 </tr>
 </thead>
@@ -42,7 +49,7 @@
 <td>
 <div>
 <!--編集ボタンは、aタグ。編集画面に遷移-->
-<a href="/todos/{{ $todo->id }}/edit"><button>編集</button></a>
+<a href="/todos/{{ $todo->id }}/edit"><button class="green_button"><span><strong>編集</strong></span></button></a>
 </div>
 </td>
   
@@ -51,7 +58,7 @@
 action="/todos/{{ $todo->id }}" method="post">
 @csrf
 @method('DELETE')
-<button>削除</button>
+<button class="red_button"><span><strong>削除</strong></span></button>
 </form>
 </td>
 </tr>
@@ -62,6 +69,9 @@ action="/todos/{{ $todo->id }}" method="post">
 </div><!--main_box-->
 
 </div><!--main-->
+
+<footer>
+</footer>
 
   <!-- flatpickrスクリプト -->
   <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
