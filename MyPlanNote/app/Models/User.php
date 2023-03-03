@@ -17,6 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
+    // リレーション 
+      public function todos()
+    {
+        return $this->hasMany(Todo::class,'user_id');
+    }
+    
+    // リレーション ここまで
+    
+    
     protected $fillable = [
         'name',
         'email',

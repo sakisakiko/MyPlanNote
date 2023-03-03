@@ -6,18 +6,24 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-
+        <link rel="stylesheet" href="/css/myplan.css" >
+    
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        
+        
+        <!-- デフォルトのスタイルシート -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <!-- ブルーテーマの追加スタイルシート -->
+        <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
+    
+    <header>@include('layouts.navigation')</header>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
-
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
