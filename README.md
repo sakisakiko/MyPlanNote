@@ -1,14 +1,17 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
+# MyPlanNote
 
+## 概要
+自分のやること、予定、目標などをメモし、完了したものを可視化するTodoアプリ
+（※製作途中です）
 
-Hi there! Welcome to AWS Cloud9!
+## できること
+- ユーザー認証(breeze)
+- タスクのメモ
+- タスクのふりわけ(完了・未完了)
 
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
+## 開発環境
+- OS：Linux(Amazon Linux 2)
+- 言語：PHP,CSS,JavaScript,MYSQL
+- フレームワーク：Laravel9
+- IDE：Cloud9
 
-Happy coding!
