@@ -20,7 +20,9 @@
         @endif
       </div>
     </div>
-      
+    
+    <!--プラン完了時はやることリストの作成＆編集ボタンは表示しない-->
+    @if($todo->status==false)  
     <div class="show_sub_header">
       <p>やることを入力しよう！</p>
       <form action="/todo/{{$todo->id}}/todo_lists" method="post">
@@ -29,7 +31,8 @@
         <input value="{{$todo->id}}" type="hidden" name="todo_id"/>
         <button type="submit"><strong class="list_btn">＋</strong></button>
       </form>
-    </div> 
+    </div>
+    @endif
       
     <!--エラーメッセージ-->
     <div class="error_box">

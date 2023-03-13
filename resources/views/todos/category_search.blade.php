@@ -5,8 +5,12 @@
   <div class="sub_box">@include('sub_box')</div><!--新規作成、絞り込みフォーム-->
   <div class="main_box">
   <h1><strong>マイプランリスト</strong></h1>
-  <p>{{ $todos->count() }}件見つかりました。</p>
+  @if ($todos->count() !=0 )
+  <p class="search_comment"><strong>{{ $todos->count() }}件見つかりました。</strong></p>
       @include('main_box')
+  @else
+  <p class="search_comment"><strong>見つかりませんでした</strong></p>
+  @endif
   </div><!--main_box-->
 </div><!--main-->
 
