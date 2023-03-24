@@ -24,8 +24,12 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::get('/todos_about',[TodoController::class,'about'])->name('todos.about');
 Route::get('/todos/category',[TodoController::class,'category_search'])->name('todos.category_search');
+Route::get('/calendar',[TodoController::class,'calendar'])->name('todos.calendar');
+Route::get('get_events', [TodoController::class, 'getEvents']);
+
 
 
 Route::resource('todos', TodoController::class);

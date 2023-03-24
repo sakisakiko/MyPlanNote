@@ -23,6 +23,12 @@
                        <p>{{ __('アバウト') }}</p>
                     </a>
                 </div>
+                
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <a href='/calendar'>
+                       <p>{{ __('スケジュール') }}</p>
+                    </a>
+                </div>
                 </div>
                 
                 

@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;//追加
 use Carbon\Carbon;//日付取得
 
 use App\Models\Todo;//追加
@@ -27,7 +29,7 @@ class TodoController extends Controller
       $categories = $category->getLists();
       
       $category_id = $request->input('category_id'); //カテゴリの値
-      
+    
       // 現在の日時を取得
       $now = Carbon::now();
       return view('todos.index',compact('todos','categories','now'));
@@ -41,7 +43,6 @@ class TodoController extends Controller
       $category = new Category;
       $categories = $category->getLists();
       
-      // $todos=Todo::query()->where('user_id',\Auth::user()->id)->where('category_id',$category_id)->get()->sortBy('due_date');
       $todos=Todo::where('user_id',\Auth::user()->id)->where('category_id',$category_id)->get()->sortBy('due_date');
       
       // 現在の日時を取得
@@ -52,10 +53,22 @@ class TodoController extends Controller
     
     public function about()
     {
-       return view('todos.about');
+      return view('todos.about');
     }
     
+       public function calendar(Request $request)
+    {
+      return view('todos.calendar');
+    }
 
+    public function getEvents(Request $request)
+    {
+      // ログイン中のユーザーのうちタスクが未完了のものを取り出す。さらにそこからtitleとdue_dateのみ取り出し配列に変換
+      $schedule = Todo::where('user_id',\Auth::user()->id)->where('status',false)->select('id','title', 'due_date as start')->get()->toArray();
+      // 上記の配列を配列を返す
+      return $schedule;
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -83,21 +96,20 @@ class TodoController extends Controller
         'category_id' => 'required',
         ]);
 
-          // 新規作成
-          $todo = new Todo;
+        // 新規作成
+        $todo = new Todo;
           
-         
-          //データを割り当てる
-          $todo->title = $request->input('title');
-          $todo->due_date = $request->input('due_date');
-          $todo->user_id = $request->user()->id;
-          $todo->category_id= $request->input('category_id');
+        //データを割り当てる
+        $todo->title = $request->input('title');
+        $todo->due_date = $request->input('due_date');
+        $todo->user_id = $request->user()->id;
+        $todo->category_id= $request->input('category_id');
           
-          //保存
-          $todo->save();
-          //リダイレクト
-          return redirect('/todos');
-        }
+        //保存
+        $todo->save();
+        //リダイレクト
+        return redirect('/todos');
+    }
 
     /**
      * Display the specified resource.
